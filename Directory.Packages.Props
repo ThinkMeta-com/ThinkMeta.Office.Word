@@ -1,0 +1,7 @@
+<Project>
+  <Import Project="$(SolutionDir)ThinkMeta.SolutionFiles/ThinkMeta.Packages.props" />
+  <ItemGroup>
+    <PackageVersion Include="ThinkMeta.Music.Notation.Fonts.Smufl.Metadata" Version="1.0.1" />
+    <PackageVersion Include="ThinkMeta.Music.Notation.Fonts.Smufl.Svg" Version="1.0.1" />
+  </ItemGroup>
+</Project>
