@@ -1,3 +1,4 @@
 /.editorconfig
 /.vs
 build
+/ThinkMeta.Office.Word.Cli/Properties/launchSettings.json

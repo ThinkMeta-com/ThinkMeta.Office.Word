@@ -1,6 +1,4 @@
-﻿using Microsoft.Office.Interop.Word;
-
-namespace ThinkMeta.Office.Word;
+﻿namespace ThinkMeta.Office.Word;
 
 /// <summary>
 /// Provides document conversion functions.
@@ -8,18 +6,22 @@ namespace ThinkMeta.Office.Word;
 public static class DocumentConverter
 {
     /// <summary>
-    /// Converts an RTF file to PDF.
+    /// Creates a converter object for faster processing if more than one file needs to be converted.
+    /// In this case, the Word application is opened only once and reused for all conversions.
     /// </summary>
-    /// <param name="rtfFilePath">The input path of the RTF file.</param>
-    /// <param name="pdfFilePath">The output path of the PDF file.</param>
-    public static void ConvertRtfToPdf(string rtfFilePath, string pdfFilePath) => ConvertFile(rtfFilePath, WdOpenFormat.wdOpenFormatRTF, pdfFilePath, WdSaveFormat.wdFormatPDF);
+    /// <returns>The converter object.</returns>
+    public static IBatchDocumentConverter CreateBatchConverter() => new BatchDocumentConverter();
 
-    private static void ConvertFile(string inputFilePath, WdOpenFormat inputFormat, string outputFilePath, WdSaveFormat outputFormat)
+    /// <summary>
+    /// Converts a file.
+    /// </summary>
+    /// <param name="inputFilePath">The input file path.</param>
+    /// <param name="inputFormat">The document format of the input file.</param>
+    /// <param name="outputFilePath">The ouput file path.</param>
+    /// <param name="outputFormat">The document format of the output file.</param>
+    public static void ConvertFile(string inputFilePath, DocumentFormat inputFormat, string outputFilePath, DocumentFormat outputFormat)
     {
-        var document = OpenWordApplication().Documents.Open(FileName: inputFilePath, Format: inputFormat);
-        document.SaveAs2(outputFilePath, outputFormat);
-        document.Close();
+        using var batchConverter = CreateBatchConverter();
+        batchConverter.ConvertFile(inputFilePath, inputFormat, outputFilePath, outputFormat);
     }
-
-    private static Application OpenWordApplication() => new() { Visible = false };
 }

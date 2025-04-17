@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>$(TargetFramework)</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\ThinkMeta.Office.Word\ThinkMeta.Office.Word.csproj" />
+    </ItemGroup>
+</Project>

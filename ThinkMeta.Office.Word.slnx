@@ -15,5 +15,6 @@
     <File Path="ThinkMeta.SolutionFiles/ThinkMeta.Net.Build.targets" />
     <File Path="ThinkMeta.SolutionFiles/ThinkMeta.Packages.props" />
   </Folder>
+  <Project Path="ThinkMeta.Office.Word.Cli/ThinkMeta.Office.Word.Cli.csproj" Id="32796fa6-380b-460d-bb0a-8bb275a4bd36" />
   <Project Path="ThinkMeta.Office.Word/ThinkMeta.Office.Word.csproj" />
 </Solution>

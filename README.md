@@ -11,5 +11,16 @@ Microsoft Word must be installed on the system.
 Currently, only RTF-to-PDF file conversion tool is available:
 
 ```cs
-DocumentConverter.ConvertRtfToPdf("input.rtf", "output.pdf");
+// Microsoft Word is opened for each call
+DocumentConverter.ConvertFile("input.rtf", DocumentFormat.Rtf, "output.pdf", DocumentFormat.Pdf);
+```
+
+For batch processing, use the `IBatchDocumentConverter` interface:
+
+```cs
+// Microsoft Word is opened only once
+using var batchConverter = DocumentConverter.CreateBatchConverter();
+
+batchConverter.ConvertFile("input1.rtf", DocumentFormat.Rtf, "output1.pdf", DocumentFormat.Pdf);
+batchConverter.ConvertFile("input2.rtf", DocumentFormat.Rtf, "output2.pdf", DocumentFormat.Pdf);
 ```
