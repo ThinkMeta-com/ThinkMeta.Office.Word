@@ -1,5 +1,7 @@
 # ThinkMeta.Office.Word
 
+[![NuGet Package](https://img.shields.io/nuget/v/ThinkMeta.Office.Word)](https://www.nuget.org/packages/ThinkMeta.Office.Word)
+
 Provides that use Microsoft Office Word Interop
 
 # Requirements
