@@ -2,7 +2,7 @@
 
 [![NuGet Package](https://img.shields.io/nuget/v/ThinkMeta.Office.Word)](https://www.nuget.org/packages/ThinkMeta.Office.Word)
 
-Provides that use Microsoft Office Word Interop
+Provides functions that use Microsoft Office Word Interop
 
 # Requirements
 
@@ -10,7 +10,7 @@ Microsoft Word must be installed on the system.
 
 # Usage
 
-Currently, only RTF-to-PDF file conversion tool is available:
+Currently, only the RTF-to-PDF file conversion tool is available:
 
 ```cs
 // Microsoft Word is opened for each call
