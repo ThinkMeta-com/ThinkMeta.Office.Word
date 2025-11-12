@@ -1,5 +1,8 @@
 # Release Notes
 
+## 1.0.4
+- Added support for .NET 10.0
+
 ## 1.0.3
 - Initial release supporting Microsoft Office Word Interop
 - Targets .NET 8, .NET 9, .NET 10

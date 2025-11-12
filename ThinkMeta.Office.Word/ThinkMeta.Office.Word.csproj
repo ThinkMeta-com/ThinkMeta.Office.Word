@@ -11,7 +11,7 @@
         <PackageTags>word;pdf;rtf</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <PackageReleaseNotes>
             Added support for .NET 10.0
         </PackageReleaseNotes>
