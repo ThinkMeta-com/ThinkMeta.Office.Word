@@ -1,29 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-      <TargetFrameworks>net7.0;net8.0;net9.0</TargetFrameworks>
-      <LangVersion>latest</LangVersion>
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
 
-      <Title>Tools that use Microsoft Office Word Interop</Title>
-      <Description>Tools that use Microsoft Office Word Interop</Description>
-      <Copyright>Copyright (c) 2025 ThinkMeta Software GmbH</Copyright>
-      <PackageProjectUrl>https://github.com/ThinkMeta-com/ThinkMeta.Office.Word</PackageProjectUrl>
-      <RepositoryUrl>https://github.com/ThinkMeta-com/ThinkMeta.Office.Word.git</RepositoryUrl>
-      <PackageTags>word;pdf;rtf</PackageTags>
-      <PackageReadmeFile>README.md</PackageReadmeFile>
-      <PackageLicenseExpression>MIT</PackageLicenseExpression>
-      <Version>1.0.2</Version>
-  </PropertyGroup>
+        <Title>Tools that use Microsoft Office Word Interop</Title>
+        <Description>Tools that use Microsoft Office Word Interop</Description>
+        <Copyright>Copyright (c) 2025 ThinkMeta Software GmbH</Copyright>
+        <PackageProjectUrl>https://github.com/ThinkMeta-com/ThinkMeta.Office.Word</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/ThinkMeta-com/ThinkMeta.Office.Word.git</RepositoryUrl>
+        <PackageTags>word;pdf;rtf</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Version>1.0.3</Version>
+        <PackageReleaseNotes>
+            Added support for .NET 10.0
+        </PackageReleaseNotes>
+    </PropertyGroup>
 
-  <ItemGroup>
-      <None Include="..\LICENSE">
-          <Pack>True</Pack>
-          <PackagePath>\</PackagePath>
-      </None>
-      <None Include="..\README.md">
-          <Pack>True</Pack>
-          <PackagePath>\</PackagePath>
-      </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\LICENSE">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+        <None Include="..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+        <None Include="RELEASE_NOTES.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
 
     <ItemGroup>
         <COMReference Include="Microsoft.Office.Interop.Word">
