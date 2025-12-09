@@ -13,5 +13,10 @@ public enum DocumentFormat
     /// <summary>
     /// RTF
     /// </summary>
-    Rtf
+    Rtf,
+
+    /// <summary>
+    /// XPS
+    /// </summary>
+    Xps
 }
