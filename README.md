@@ -10,8 +10,6 @@ Microsoft Word must be installed on the system.
 
 # Usage
 
-Currently, only the RTF-to-PDF file conversion tool is available:
-
 ```cs
 // Microsoft Word is opened for each call
 DocumentConverter.ConvertFile("input.rtf", DocumentFormat.Rtf, "output.pdf", DocumentFormat.Pdf);
