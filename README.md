@@ -8,11 +8,19 @@ Provides functions that use Microsoft Office Word Interop
 
 Microsoft Word must be installed on the system.
 
+# Supported Formats
+
+- PDF
+- RTF
+- XPS
+- DOCX
+
 # Usage
 
 ```cs
 // Microsoft Word is opened for each call
 DocumentConverter.ConvertFile("input.rtf", DocumentFormat.Rtf, "output.pdf", DocumentFormat.Pdf);
+DocumentConverter.ConvertFile("input.docx", DocumentFormat.Docx, "output.xps", DocumentFormat.Xps);
 ```
 
 For batch processing, use the `IBatchDocumentConverter` interface:
@@ -22,5 +30,5 @@ For batch processing, use the `IBatchDocumentConverter` interface:
 using var batchConverter = DocumentConverter.CreateBatchConverter();
 
 batchConverter.ConvertFile("input1.rtf", DocumentFormat.Rtf, "output1.pdf", DocumentFormat.Pdf);
-batchConverter.ConvertFile("input2.rtf", DocumentFormat.Rtf, "output2.pdf", DocumentFormat.Pdf);
+batchConverter.ConvertFile("input2.docx", DocumentFormat.Docx, "output2.xps", DocumentFormat.Xps);
 ```

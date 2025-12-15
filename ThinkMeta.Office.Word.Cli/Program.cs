@@ -20,19 +20,16 @@ internal static class Program
 
     private static void ConvertFile(string input, string output)
     {
-        var inputExtension = Path.GetExtension(input).ToLowerInvariant();
         var outputExtension = Path.GetExtension(output).ToLowerInvariant();
-
-        var inputFormat = inputExtension switch {
-            ".rtf" => DocumentFormat.Rtf,
-            _ => throw new NotSupportedException($"Input file '{input}' not supported.")
-        };
 
         var outputFormat = outputExtension switch {
             ".pdf" => DocumentFormat.Pdf,
+            ".rtf" => DocumentFormat.Rtf,
+            ".xps" => DocumentFormat.Xps,
+            ".docx" => DocumentFormat.Docx,
             _ => throw new NotSupportedException($"Output file '{output}' not supported.")
         };
 
-        DocumentConverter.ConvertFile(input, inputFormat, output, outputFormat);
+        DocumentConverter.ConvertFile(input, output, outputFormat);
     }
 }

@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.0.7
+- Using auto detection of input file
+
+## 1.0.6
+- Added support for DOCX import and export
+
 ## 1.0.5
 - Added support for XPS export
 

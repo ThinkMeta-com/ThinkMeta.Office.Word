@@ -18,5 +18,10 @@ public enum DocumentFormat
     /// <summary>
     /// XPS
     /// </summary>
-    Xps
+    Xps,
+
+    /// <summary>
+    /// DOCX
+    /// </summary>
+    Docx
 }
