@@ -1,5 +1,8 @@
 # Release Notes
 
+## 1.0.8
+- Added string replacement functionality to Word documents via ReplaceStringsInFile
+
 ## 1.0.7
 - Using auto detection of input file
 

@@ -29,6 +29,25 @@ internal class BatchDocumentConverter : IBatchDocumentConverter
         document.Close();
     }
 
+    public void ReplaceStringsInFile(string filePath, Dictionary<string, string> replacements)
+    {
+        var document = _wordApplication.Documents.Open(FileName: filePath, Format: WdOpenFormat.wdOpenFormatAuto);
+        try {
+            foreach (var kvp in replacements) {
+                var find = document.Content.Find;
+                find.ClearFormatting();
+                find.Text = kvp.Key;
+                find.Replacement.ClearFormatting();
+                find.Replacement.Text = kvp.Value;
+                _ = find.Execute(Replace: WdReplace.wdReplaceAll, Forward: true);
+            }
+            document.Save();
+        }
+        finally {
+            document.Close();
+        }
+    }
+
     protected virtual void Dispose(bool disposing)
     {
         if (!_disposedValue) {

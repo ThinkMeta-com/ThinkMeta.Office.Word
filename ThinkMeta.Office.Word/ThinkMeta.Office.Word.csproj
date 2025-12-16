@@ -11,9 +11,9 @@
         <PackageTags>word;pdf;rtf;xps;docx</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.0.7</Version>
+        <Version>1.0.8</Version>
         <PackageReleaseNotes>
-            Using auto detection of input file
+            Added string replacement functionality to Word documents via ReplaceStringsInFile
         </PackageReleaseNotes>
     </PropertyGroup>
 

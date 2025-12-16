@@ -19,8 +19,14 @@ Microsoft Word must be installed on the system.
 
 ```cs
 // Microsoft Word is opened for each call
-DocumentConverter.ConvertFile("input.rtf", DocumentFormat.Rtf, "output.pdf", DocumentFormat.Pdf);
-DocumentConverter.ConvertFile("input.docx", DocumentFormat.Docx, "output.xps", DocumentFormat.Xps);
+DocumentConverter.ConvertFile("input.rtf", "output.pdf", DocumentFormat.Pdf);
+DocumentConverter.ConvertFile("input.docx", "output.xps", DocumentFormat.Xps);
+
+// Replace strings in a document (in-place)
+DocumentConverter.ReplaceStringsInFile("input.docx", new Dictionary<string, string> {
+    {"oldText", "newText"},
+    {"foo", "bar"}
+});
 ```
 
 For batch processing, use the `IBatchDocumentConverter` interface:
@@ -29,6 +35,12 @@ For batch processing, use the `IBatchDocumentConverter` interface:
 // Microsoft Word is opened only once
 using var batchConverter = DocumentConverter.CreateBatchConverter();
 
-batchConverter.ConvertFile("input1.rtf", DocumentFormat.Rtf, "output1.pdf", DocumentFormat.Pdf);
-batchConverter.ConvertFile("input2.docx", DocumentFormat.Docx, "output2.xps", DocumentFormat.Xps);
+batchConverter.ConvertFile("input1.rtf", "output1.pdf", DocumentFormat.Pdf);
+batchConverter.ConvertFile("input2.docx", "output2.xps", DocumentFormat.Xps);
+
+// Replace strings in a document (in-place)
+batchConverter.ReplaceStringsInFile("input.docx", new Dictionary<string, string> {
+    {"oldText", "newText"},
+    {"foo", "bar"}
+});
 ```

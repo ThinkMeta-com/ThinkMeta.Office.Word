@@ -23,4 +23,15 @@ public static class DocumentConverter
         using var batchConverter = CreateBatchConverter();
         batchConverter.ConvertFile(inputFilePath, outputFilePath, outputFormat);
     }
+
+    /// <summary>
+    /// Replaces all occurrences of the specified strings in the file.
+    /// </summary>
+    /// <param name="filePath">The file path.</param>
+    /// <param name="replacements">A dictionary of string replacements.</param>
+    public static void ReplaceStringsInFile(string filePath, Dictionary<string, string> replacements)
+    {
+        using var batchConverter = CreateBatchConverter();
+        batchConverter.ReplaceStringsInFile(filePath, replacements);
+    }
 }
