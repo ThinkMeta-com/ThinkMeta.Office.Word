@@ -11,24 +11,16 @@ internal class BatchDocumentConverter : IBatchDocumentConverter
 
     public void ConvertFile(string inputFilePath, string outputFilePath, DocumentFormat outputFormat)
     {
-        if (outputFormat == DocumentFormat.Xps)
-            ConvertFileToXps(inputFilePath, outputFilePath);
-        else
-            ConvertFile(inputFilePath, outputFilePath, outputFormat.GetSaveDocumentFormat());
-    }
-
-    private void ConvertFile(string inputFilePath, string outputFilePath, WdSaveFormat outputFormat)
-    {
-        _ = Open(inputFilePath)
-            .SaveAs(outputFilePath, outputFormat)
-            .Close();
-    }
-
-    private void ConvertFileToXps(string inputFilePath, string outputFilePath)
-    {
-        _ = Open(inputFilePath)
-            .ExportAsFixedFormat(outputFilePath, WdExportFormat.wdExportFormatXPS, WdExportOptimizeFor.wdExportOptimizeForPrint)
-            .Close();
+        if (outputFormat == DocumentFormat.Xps) {
+            _ = Open(inputFilePath)
+                .ExportAsFixedFormat(outputFilePath, DocumentFormat.Xps)
+                .Close();
+        }
+        else {
+            _ = Open(inputFilePath)
+                .SaveAs(outputFilePath, outputFormat)
+                .Close();
+        }
     }
 
     public void ReplaceStringsInFile(string filePath, Dictionary<string, string> replacements)

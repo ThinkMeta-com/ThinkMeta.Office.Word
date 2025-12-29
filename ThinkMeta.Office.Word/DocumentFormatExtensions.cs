@@ -13,4 +13,13 @@ internal static class DocumentFormatExtensions
             _ => throw new NotSupportedException($"Output format '{documentFormat}' is not supported")
         };
     }
+
+    public static WdExportFormat GetExportDocumentFormat(this DocumentFormat documentFormat)
+    {
+        return documentFormat switch {
+            DocumentFormat.Pdf => WdExportFormat.wdExportFormatPDF,
+            DocumentFormat.Xps => WdExportFormat.wdExportFormatXPS,
+            _ => throw new NotSupportedException($"Output format '{documentFormat}' is not supported")
+        };
+    }
 }

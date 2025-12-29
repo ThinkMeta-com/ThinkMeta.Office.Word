@@ -17,9 +17,10 @@ public class WordDocument
     /// <param name="outputFilePath">The file path to save the document to.</param>
     /// <param name="outputFormat">The format in which to save the document.</param>
     /// <returns>The same <see cref="WordDocument"/> instance for fluent chaining.</returns>
-    public WordDocument SaveAs(string outputFilePath, WdSaveFormat outputFormat)
+    public WordDocument SaveAs(string outputFilePath, DocumentFormat outputFormat)
     {
-        Document.SaveAs2(outputFilePath, outputFormat);
+        var wdFormat = outputFormat.GetSaveDocumentFormat();
+        Document.SaveAs2(outputFilePath, wdFormat);
         return this;
     }
 
@@ -48,11 +49,11 @@ public class WordDocument
     /// </summary>
     /// <param name="outputFilePath">The file path to export the document to.</param>
     /// <param name="exportFormat">The fixed format to export as.</param>
-    /// <param name="optimizeFor">The optimization setting for the export.</param>
     /// <returns>The same <see cref="WordDocument"/> instance for fluent chaining.</returns>
-    public WordDocument ExportAsFixedFormat(string outputFilePath, WdExportFormat exportFormat, WdExportOptimizeFor optimizeFor)
+    public WordDocument ExportAsFixedFormat(string outputFilePath, DocumentFormat exportFormat)
     {
-        Document.ExportAsFixedFormat(outputFilePath, exportFormat, OptimizeFor: optimizeFor);
+        var wdExportFormat = exportFormat.GetExportDocumentFormat();
+        Document.ExportAsFixedFormat(outputFilePath, wdExportFormat, OptimizeFor: WdExportOptimizeFor.wdExportOptimizeForPrint);
         return this;
     }
 

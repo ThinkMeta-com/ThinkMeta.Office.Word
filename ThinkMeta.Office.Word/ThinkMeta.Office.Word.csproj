@@ -11,9 +11,9 @@
         <PackageTags>word;pdf;rtf;xps;docx</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.0.9</Version>
+        <Version>1.0.10</Version>
         <PackageReleaseNotes>
-            Added fluent extension methods for document conversion and string replacement
+            Cleaned up public interface.
         </PackageReleaseNotes>
     </PropertyGroup>
 

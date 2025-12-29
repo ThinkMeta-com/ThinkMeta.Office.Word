@@ -1,5 +1,8 @@
 # Release Notes
 
+## 1.0.10
+- Cleaned up public interface
+
 ## 1.0.9
 - Added fluent extension methods for document conversion and string replacement
 
