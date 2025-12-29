@@ -43,4 +43,3 @@ batchConverter.ReplaceStringsInFile("input.docx", new Dictionary<string, string>
     {"oldText", "newText"},
     {"foo", "bar"}
 });
-```

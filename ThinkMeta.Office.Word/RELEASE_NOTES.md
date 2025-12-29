@@ -1,5 +1,8 @@
 # Release Notes
 
+## 1.0.9
+- Added fluent extension methods for document conversion and string replacement
+
 ## 1.0.8
 - Added string replacement functionality to Word documents via ReplaceStringsInFile
 

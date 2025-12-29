@@ -7,6 +7,8 @@ internal class BatchDocumentConverter : IBatchDocumentConverter
     private readonly Application _wordApplication = new() { Visible = false };
     private bool _disposedValue;
 
+    public WordDocument Open(string filePath) => new(_wordApplication.Documents.Open(FileName: filePath, Format: WdOpenFormat.wdOpenFormatAuto));
+
     public void ConvertFile(string inputFilePath, string outputFilePath, DocumentFormat outputFormat)
     {
         if (outputFormat == DocumentFormat.Xps)
@@ -17,34 +19,41 @@ internal class BatchDocumentConverter : IBatchDocumentConverter
 
     private void ConvertFile(string inputFilePath, string outputFilePath, WdSaveFormat outputFormat)
     {
-        var document = _wordApplication.Documents.Open(FileName: inputFilePath, Format: WdOpenFormat.wdOpenFormatAuto);
-        document.SaveAs2(outputFilePath, outputFormat);
-        document.Close();
+        _ = Open(inputFilePath)
+            .SaveAs(outputFilePath, outputFormat)
+            .Close();
     }
 
     private void ConvertFileToXps(string inputFilePath, string outputFilePath)
     {
-        var document = _wordApplication.Documents.Open(FileName: inputFilePath, Format: WdOpenFormat.wdOpenFormatAuto);
-        document.ExportAsFixedFormat(outputFilePath, WdExportFormat.wdExportFormatXPS, OptimizeFor: WdExportOptimizeFor.wdExportOptimizeForPrint);
-        document.Close();
+        _ = Open(inputFilePath)
+            .ExportAsFixedFormat(outputFilePath, WdExportFormat.wdExportFormatXPS, WdExportOptimizeFor.wdExportOptimizeForPrint)
+            .Close();
     }
 
     public void ReplaceStringsInFile(string filePath, Dictionary<string, string> replacements)
     {
-        var document = _wordApplication.Documents.Open(FileName: filePath, Format: WdOpenFormat.wdOpenFormatAuto);
+        var document = Open(filePath);
         try {
-            foreach (var kvp in replacements) {
-                var find = document.Content.Find;
-                find.ClearFormatting();
-                find.Text = kvp.Key;
-                find.Replacement.ClearFormatting();
-                find.Replacement.Text = kvp.Value;
-                _ = find.Execute(Replace: WdReplace.wdReplaceAll, Forward: true);
-            }
-            document.Save();
+            _ = document
+                .ReplaceStrings(replacements)
+                .Save();
         }
         finally {
-            document.Close();
+            _ = document.Close();
+        }
+    }
+
+    public void TruncateFile(string filePath, string searchString)
+    {
+        var document = Open(filePath);
+        try {
+            _ = document
+                .Truncate(searchString)
+                .Save();
+        }
+        finally {
+            _ = document.Close();
         }
     }
 

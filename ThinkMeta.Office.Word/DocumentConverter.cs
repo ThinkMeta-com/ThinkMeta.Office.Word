@@ -34,4 +34,17 @@ public static class DocumentConverter
         using var batchConverter = CreateBatchConverter();
         batchConverter.ReplaceStringsInFile(filePath, replacements);
     }
+
+    /// <summary>
+    /// Truncates the specified file at the first occurrence of the given search string, removing all content after that
+    /// point.
+    /// </summary>
+    /// <param name="filePath">The full path to the file to be truncated. Cannot be null or empty.</param>
+    /// <param name="searchString">The string to search for within the file. All content after the first occurrence of this string will be removed.
+    /// Cannot be null or empty.</param>
+    public static void TruncateFile(string filePath, string searchString)
+    {
+        using var batchConverter = CreateBatchConverter();
+        batchConverter.TruncateFile(filePath, searchString);
+    }
 }
