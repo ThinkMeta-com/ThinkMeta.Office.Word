@@ -64,14 +64,18 @@ public class WordDocument
     /// <returns>The same <see cref="WordDocument"/> instance for fluent chaining.</returns>
     public WordDocument ReplaceStrings(Dictionary<string, string> replacements)
     {
+        var range = Document.Content;
+        var find = range.Find;
+        find.ClearFormatting();
+        find.Replacement.ClearFormatting();
+        find.MatchWildcards = false;
+
         foreach (var kvp in replacements) {
-            var find = Document.Content.Find;
-            find.ClearFormatting();
             find.Text = kvp.Key;
-            find.Replacement.ClearFormatting();
             find.Replacement.Text = kvp.Value;
             _ = find.Execute(Replace: WdReplace.wdReplaceAll, Forward: true);
         }
+
         return this;
     }
 
@@ -82,15 +86,10 @@ public class WordDocument
     /// <returns>The same <see cref="WordDocument"/> instance for fluent chaining.</returns>
     public WordDocument Truncate(string searchString)
     {
-        var find = Document.Content.Find;
-        find.ClearFormatting();
-        find.Text = searchString;
-        if (find.Execute(Forward: true)) {
-            var start = Document.Application.Selection.Start;
-            var end = Document.Content.End;
-            var range = Document.Range(start, end);
-            _ = range.Delete();
-        }
+        var searchRange = Document.Content;
+        if (searchRange.Find.Execute(FindText: searchString, MatchCase: true, MatchWholeWord: false, Forward: true))
+            _ = Document.Range(searchRange.Start, Document.Content.End).Delete();
+
         return this;
     }
 }

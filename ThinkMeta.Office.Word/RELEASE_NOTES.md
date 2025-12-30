@@ -1,5 +1,8 @@
 # Release Notes
 
+## 1.0.11
+- Fixed bug in Truncate()
+
 ## 1.0.10
 - Cleaned up public interface
 

@@ -11,9 +11,9 @@
         <PackageTags>word;pdf;rtf;xps;docx</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.0.10</Version>
+        <Version>1.0.11</Version>
         <PackageReleaseNotes>
-            Cleaned up public interface.
+            Fixed bug in Truncate().
         </PackageReleaseNotes>
     </PropertyGroup>
 
